@@ -7,7 +7,7 @@ import sys
 
 
 # Get description from Readme file
-readme_file = os.path.join(os.path.dirname(__file__), 'README.md')
+readme_file = os.path.join(os.path.dirname(__file__), 'README.rst')
 long_description = open(readme_file).read()
 
 # Build a list with requirements of the app
@@ -24,7 +24,7 @@ if sys.version_info < (3, 4):
 
 
 setup(name='django-onetimelink',
-        version=0.1,
+        version=0.2,
         description='A django one-time file streaming application',
         long_description=long_description,
         author='FENG Hao',
