@@ -50,7 +50,7 @@ class UploadFile(models.Model):
     display_name = models.CharField(max_length=63, blank=False, null=False, unique=True, verbose_name=_('Display Name'))
     file = models.FileField(
         upload_to='',
-        help_text=_(u"Select the file to upload"),
+        help_text=_(u'Select the file to upload'),
         verbose_name=_(u'file'),
         max_length=255,
     )

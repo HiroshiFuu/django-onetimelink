@@ -24,14 +24,8 @@ class DownSiteAdmin(admin.ModelAdmin):
         self.request = request
         return super(DownSiteAdmin, self).get_queryset(request)
 
-    list_display = ('customer', 'active', 'link', 'timestamp_creation')
-    search_fields = ['customer', 'timestamp_creation']
-    list_per_page = 50
-    fieldsets = (
-        (_(u'Link'), {
-            'fields': ('customer', 'active')
-        }),
-    )
+    list_display = ('pk', 'link', 'timestamp_creation')
+    search_fields = ['timestamp_creation']
 
     def get_urls(self):
         urls = super().get_urls()
@@ -42,15 +36,12 @@ class DownSiteAdmin(admin.ModelAdmin):
 
 
     def make_downloadsite(self, request):
-        import time
-        customer = Customer(name='name_'+str(round(time.time()*1000)), company='company_'+str(round(time.time()*1000)))
-        customer.save()
-        sd = DownloadSite(customer=customer)
+        sd = DownloadSite()
         sd.save()
         for down_file in UploadFile.objects.all():
             d = Download(site=sd, down_file=down_file)
             d.save()
-        return HttpResponseRedirect("../")
+        return HttpResponseRedirect('../')
 
     def link(self, obj):
         """Generate download url for the site"""
