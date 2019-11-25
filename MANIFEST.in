@@ -1,1 +1,4 @@
+include LICENSE
 include README.md
+recursive-include onetimelink/static *
+recursive-include onetimelink/templates *

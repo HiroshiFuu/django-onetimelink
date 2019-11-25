@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
 
-class OnetimelinkConfig(AppConfig):
-    name = 'onetimelink'
+class OneTimeLinkConfig(AppConfig):
+    name = 'OneTimeLink'
+    verbose_name = 'OneTimeLink'

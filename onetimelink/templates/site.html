@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block page_css %}
+
+<link href="{% static 'css/site.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block title %}
+
+    {% trans "Downloads" %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="content_section">
+    <h1>{% trans "Requested content" %}</h1>
+    <br/>
+
+    {% if downloads.actives %}
+    <h3>{% trans "Active downloads" %}:</h3>
+    {% for obj in downloads.actives %}
+    {% trans "Download" %}: <a href="/{{ basepath }}/link/{{ obj.link_key }}/{{ obj.get_filename }}" name="Your Download" onClick="refresh_page()">{% if obj.down_file.display_name %}{{ obj.down_file.display_name }}{% else %}({{ obj.get_filename }}){% endif %}</a>{% if obj.down_file.display_name %}<a_text>({{ obj.get_filename }})</a_text>{% endif %}<br/>
+    {% endfor %}
+    <br/>
+    {% endif %}
+
+    {% if downloads.expired %}
+    <h3>{% trans "Expired downloads" %}:</h3>
+    {% for obj in downloads.expired %}
+        {% trans "Downloaded" %}: <a href="/{{ basepath }}/link/{{ obj.link_key }}/{{ obj.get_filename }}" name="Your Download" style="text-decoration: line-through;">{% if obj.down_file.display_name %}{{ obj.down_file.display_name }}{% else %}<a_text>({{ obj.get_filename }})</a_text>{% endif %}</a><br/>
+    {% endfor %}
+    <br/>
+    {% endif %}
+
+    {% if downloads.notexist %}
+    <h3>{% trans "These links are faulty" %}:</h3>
+    {% for key in downloads.notexist %}
+        {% trans "Link Error" %}: <a href="/{{ basepath }}/link/{{ key }}/unknown" name="Does not exist">http://{{ request.META.HTTP_HOST }}/{{ basepath }}/link/{{ key }}/</a><br/>
+    {% endfor %}
+    <br/>
+    {% endif %}
+</div>
+
+<div class="content_section">
+    <h2>{% trans "difficulties encountered?" %}</h2>
+    {% trans "If anything goes wrong, please contact us with" %}
+    <a href="#" name="contact if something goes wrong">{% trans "our contact form" %}.</a>
+</div>
+
+{% endblock %}
+
+{% block page_js %}
+
+<script type="text/javascript">
+function refresh_page() {
+    setTimeout(() => {
+        window.location.reload(true);
+    }, 1000);
+}
+</script>
+
+{% endblock %}

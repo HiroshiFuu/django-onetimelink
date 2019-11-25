@@ -1,0 +1,49 @@
+.content_section {
+	padding: 60px 15px 0;
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media only screen and (min-width:576px) {
+	.content_section {
+		max-width: 540px;
+	}
+
+}
+
+@media only screen and (min-width:768px) {
+	.content_section {
+		max-width: 720px;
+	}
+
+}
+
+@media only screen and (min-width:992px) {
+	.content_section {
+		max-width: 960px;
+	}
+
+}
+
+
+@media only screen and (min-width:1200px) {
+	.content_section {
+		max-width: 1140px;
+	}
+
+}
+
+a {
+	color: #009688;
+}
+
+h1 {
+	margin-bottom: 2rem;
+}
+
+a_text {
+	color: grey;
+}
