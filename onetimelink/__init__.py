@@ -1,4 +1,3 @@
-import version
 import os
 import django
 import sys
