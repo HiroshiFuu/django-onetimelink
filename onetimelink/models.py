@@ -49,7 +49,7 @@ class UploadFile(models.Model):
         verbose_name = 'Upload File'
     display_name = models.CharField(max_length=63, blank=False, null=False, unique=True, verbose_name=_('Display Name'))
     file = models.FileField(
-        upload_to='',
+        upload_to=presettings.DYNAMIC_LINK_UPLOAD_TO,
         help_text=_(u'Select the file to upload'),
         verbose_name=_(u'file'),
         max_length=255,
@@ -69,7 +69,7 @@ class Download(models.Model):
         verbose_name=_(u'creation time'),
     )
     site = models.ForeignKey(DownloadSite, models.CASCADE, related_name='downloads', blank=True, null=True)
-    down_file = models.ForeignKey(UploadFile, models.CASCADE, related_name='download_file', blank=True, null=True)
+    down_file = models.ForeignKey(UploadFile, models.CASCADE, related_name='downloads', blank=True, null=True)
 
     def get_filename(self):
         return os.path.basename(self.down_file.file.path)

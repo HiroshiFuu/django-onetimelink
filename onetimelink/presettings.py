@@ -13,11 +13,18 @@ DYNAMIC_LINK_MEDIA = getattr(
 )
 
 # A string that modify the serve url path:
-# /www.example.com/DYNAMIC_LINK_URL_BASE_COMPONENT/link/3839hd8HKl3/example.zip
+# www.example.com/DYNAMIC_LINK_URL_BASE_COMPONENT/link/3839hd8HKl3/example.zip
 DYNAMIC_LINK_URL_BASE_COMPONENT = getattr(
     settings,
     'DYNAMIC_LINK_URL_BASE_COMPONENT',
     'OneTimeLink'
+)
+
+# Uploaded files base directory
+DYNAMIC_LINK_UPLOAD_TO = getattr(
+    settings,
+    'DYNAMIC_LINK_UPLOAD_TO',
+    ''
 )
 
 # It's here because of not violate the DRY priciple.

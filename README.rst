@@ -2,7 +2,7 @@
 Description
 ===========
 
-A Django file streaming application to provide download links that only valid for one time click. Ispired by django-dynamic-link
+A Django file streaming application to provide download links that only valid for one time click. Ispired by django-dynamic-link.
 
 **License**
 
@@ -11,12 +11,13 @@ A Django file streaming application to provide download links that only valid fo
 **Notes**
 
     * Tested with Django 2.2
+    * Tested with Django 3.1
 
 ========
 Features
 ========
 
-    * One-time only download ink 
+    * One-time only download link 
 
 ============
 Installation
@@ -36,7 +37,7 @@ Installation
 
         * Use the stable release (recommended)::
 
-                pip install django-onetimelink
+            pip install django-onetimelink
 
         * With pip you can also uninstall::
 
@@ -74,6 +75,7 @@ Setup
         
     * Finally run::
     
+        python manage.py makemigrations
         python manage.py migrate
         python manage.py runserver
 
@@ -92,6 +94,11 @@ Setup
         - A string that modifies your url serve path.
         - Example: www.example.com/DYNAMIC_LINK_URL_BASE_COMPONENT/link/3839hd8HKl3/example.zip.
 
+    DYNAMIC_LINK_UPLOAD_TO
+    
+        - Default: ''
+        - Uploaded files base directory.
+
 =====
 Usage
 =====
@@ -102,4 +109,4 @@ Open the admin interface and go to "OneTimeLink" section. The rest should be sel
 
     * Upload Files to upload the file to DYNAMIC_LINK_MEDIA
     * The filename from the in Upload Files is only for human readability. You can delete or change these filenames in any way you want.
-    * Trough the action button you can serve a site with all the files from Upload Files.
+    * Through the action button you can serve a site with all the files from Upload Files.
