@@ -5,8 +5,8 @@ import random
 
 def file_link_url(request, linkobject):
     """returns the access url of the of the dynamicLink object"""
-    return '%s%s/%s/link/%s/%s' % (
-        'http://',
+    return '%s://%s/%s/link/%s/%s' % (
+        presettings.DYNAMIC_LINK_SCHEMA_PROTO,
         request.META.get('HTTP_HOST'),
         presettings.DYNAMIC_LINK_URL_BASE_COMPONENT,
         linkobject.link_key,
@@ -16,10 +16,9 @@ def file_link_url(request, linkobject):
 
 def site_link_url(request, siteobj):
     """returns a site urls form already given keys"""
-    return '%s%s/%s/site/%s' % (
-        'http://',
-        request.META.get(
-            'HTTP_HOST'),
+    return '%s://%s/%s/site/%s' % (
+        presettings.DYNAMIC_LINK_SCHEMA_PROTO,
+        request.META.get('HTTP_HOST'),
         presettings.DYNAMIC_LINK_URL_BASE_COMPONENT,
         siteobj.link_key
     )

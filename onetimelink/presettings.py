@@ -20,11 +20,21 @@ DYNAMIC_LINK_URL_BASE_COMPONENT = getattr(
     'OneTimeLink'
 )
 
+if settings.FORCE_SCRIPT_NAME:
+	DYNAMIC_LINK_URL_BASE_COMPONENT = settings.FORCE_SCRIPT_NAME + '/' + DYNAMIC_LINK_URL_BASE_COMPONENT
+
 # Uploaded files base directory
 DYNAMIC_LINK_UPLOAD_TO = getattr(
     settings,
     'DYNAMIC_LINK_UPLOAD_TO',
     ''
+)
+
+# Setting for schema protocal
+DYNAMIC_LINK_SCHEMA_PROTO = getattr(
+    settings,
+    'DYNAMIC_LINK_SCHEMA_PROTO',
+    'http'
 )
 
 # It's here because of not violate the DRY priciple.

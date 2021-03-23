@@ -99,6 +99,11 @@ Setup
         - Default: ''
         - Uploaded files base directory.
 
+    DYNAMIC_LINK_SCHEMA_PROTO
+    
+        - Default: 'http'
+        - HTTP Schema Protocal.
+
 =====
 Usage
 =====
@@ -110,3 +115,12 @@ Open the admin interface and go to "OneTimeLink" section. The rest should be sel
     * Upload Files to upload the file to DYNAMIC_LINK_MEDIA
     * The filename from the in Upload Files is only for human readability. You can delete or change these filenames in any way you want.
     * Through the action button you can serve a site with all the files from Upload Files.
+
+==========
+Changelogs
+==========
+
+**2021-03-24**
+
+    * Add setting for schema protocal
+    * Prefix links with FORCE_SCRIPT_NAME
