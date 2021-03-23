@@ -70,7 +70,7 @@ def site(request, offset):
 
     template = 'site.html'
     extra_context = {
-        'basepath': presettings.DYNAMIC_LINK_URL_BASE_COMPONENT,
+        'basepath': presettings.DYNAMIC_LINK_URL,
         'downloads': obj
     }
     return render(request, template, extra_context)
