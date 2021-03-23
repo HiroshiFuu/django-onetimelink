@@ -8,7 +8,7 @@ def file_link_url(request, linkobject):
     return '%s://%s%s/link/%s/%s' % (
         presettings.DYNAMIC_LINK_SCHEMA_PROTO,
         request.META.get('HTTP_HOST'),
-        presettings.DYNAMIC_LINK_URL_BASE_COMPONENT,
+        presettings.DYNAMIC_LINK_URL,
         linkobject.link_key,
         linkobject.get_filename()
     )
@@ -19,7 +19,7 @@ def site_link_url(request, siteobj):
     return '%s://%s%s/site/%s' % (
         presettings.DYNAMIC_LINK_SCHEMA_PROTO,
         request.META.get('HTTP_HOST'),
-        presettings.DYNAMIC_LINK_URL_BASE_COMPONENT,
+        presettings.DYNAMIC_LINK_URL,
         siteobj.link_key
     )
 
