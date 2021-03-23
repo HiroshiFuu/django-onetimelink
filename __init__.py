@@ -28,7 +28,7 @@ def CKINST():
         error = False
     if not pyver >= (3, 4):
         print('')
-        print('Hint! Python requires 3.4 or greater which currently is' % pyver)
+        print('Hint! Python requires 3.6 or greater which currently is' % pyver)
     else:
         error = False
 
