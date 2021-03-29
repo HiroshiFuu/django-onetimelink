@@ -122,5 +122,11 @@ Changelogs
 
 **2021-03-24**
 
-    * Add setting for schema protocal
+    * Add setting for schema protocol
     * Prefix links with FORCE_SCRIPT_NAME
+
+**2021-03-25**
+
+    * Fix several bugs
+    * Do NOT use previous versions of this package
+

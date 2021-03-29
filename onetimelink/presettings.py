@@ -20,8 +20,9 @@ DYNAMIC_LINK_URL_BASE_COMPONENT = getattr(
     'OneTimeLink'
 )
 
-DYNAMIC_LINK_URL = ''
 
+# Prefixes if FORCE_SCRIPT_NAME
+DYNAMIC_LINK_URL = ''
 if settings.FORCE_SCRIPT_NAME:
 	DYNAMIC_LINK_URL = settings.FORCE_SCRIPT_NAME + '/' + DYNAMIC_LINK_URL_BASE_COMPONENT
 else:
@@ -35,7 +36,7 @@ DYNAMIC_LINK_UPLOAD_TO = getattr(
     ''
 )
 
-# Setting for schema protocal
+# Setting for schema protocol
 DYNAMIC_LINK_SCHEMA_PROTO = getattr(
     settings,
     'DYNAMIC_LINK_SCHEMA_PROTO',
