@@ -12,10 +12,8 @@ from .models import DownloadSite, Download, UploadFile
 from . import presettings
 from . import api
 
-import csv
 
-
-@admin.register(DownloadSiteAdmin)
+@admin.register(DownloadSite)
 class DownloadSiteAdmin(admin.ModelAdmin):
     change_list_template = "sitedownload_changelist.html"
 
@@ -36,31 +34,31 @@ class DownloadSiteAdmin(admin.ModelAdmin):
 
 
     def make_downloadsite(self, request):
-        sd = DownloadSite()
-        sd.save()
+        download_site = DownloadSite()
+        download_site.save()
         for down_file in UploadFile.objects.all():
-            d = Download(site=sd, down_file=down_file)
-            d.save()
+            download = Download(site=download_site, down_file=down_file)
+            download.save()
         return HttpResponseRedirect('../')
 
     def link(self, obj):
         """Generate download url for the site"""
-        sitelink = api.site_link_url(self.request, obj)
-        sitelink = u'<span style="color: #FF7F00; ">%s:</span> \
+        site_link = api.site_link_url(self.request, obj)
+        site_link = u'<span style="color: #FF7F00; ">%s:</span> \
         <a target="new" href="%s/">%s/</a><br/>' \
-            % (str(_(u'Site')), sitelink, sitelink)
+            % (str(_(u'Site')), site_link, site_link)
 
-        return mark_safe(sitelink)
+        return mark_safe(site_link)
     link.allow_tags = True
     link.short_description = _(u'link')
 
 
-@admin.register(DownloadLinkAdmin)
-class DownloadLinkAdmin(admin.ModelAdmin):
+@admin.register(DownloadSite)
+class DownloadAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         """catch the request object for list pages"""
         self.request = request
-        return super(DownloadLinkAdmin, self).get_queryset(request)
+        return super(DownloadAdmin, self).get_queryset(request)
 
     list_display = ('site', 'upload_file', 'file', 'active', 'link',
                     'timestamp_creation')
@@ -78,7 +76,6 @@ class DownloadLinkAdmin(admin.ModelAdmin):
     upload_file.allow_tags = True
     upload_file.short_description = _(u'upload_file')
 
-
     def file(self, obj):
         """Shows truncated filename on platform independent length."""
         return str(obj.down_file.file.path).split(presettings.DYNAMIC_LINK_MEDIA)[-1]
@@ -87,11 +84,11 @@ class DownloadLinkAdmin(admin.ModelAdmin):
 
     def link(self, obj):
         """Generate download url from link object"""
-        filelink = api.file_link_url(self.request, obj)
-        filelink = u'<span style="color: #FF7F00; ">%s:</span> \
+        file_link = api.file_link_url(self.request, obj)
+        file_link = u'<span style="color: #FF7F00; ">%s:</span> \
         <a target="new" href="%s/">%s/</a><br/>' \
-            % (str(_(u'File')), filelink, filelink)
-        return mark_safe(filelink)
+            % (str(_(u'File')), file_link, file_link)
+        return mark_safe(file_link)
     link.allow_tags = True
     link.short_description = _(u'link')
 
