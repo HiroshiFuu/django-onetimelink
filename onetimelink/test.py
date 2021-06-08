@@ -13,7 +13,7 @@ class Obj:
 
 class UploadFileCase(TestCase):
     def setUp(self):
-        f = open(os.getcwd() + '/media/pier-569314_640.jpg', 'rb')
+        f = open(os.getcwd() + '/media/test.jpg', 'rb')
         UploadFile.objects.create(display_name="test", file=File(f))
 
     def test_uploaded_file(self):
@@ -27,7 +27,7 @@ class UploadFileCase(TestCase):
 
 class DownloadCase(TestCase):
     def setUp(self):
-        f = open(os.getcwd() + '/media/pier-569314_640.jpg', 'rb')
+        f = open(os.getcwd() + '/media/test.jpg', 'rb')
         UploadFile.objects.create(display_name="test", file=File(f))
 
     def test_download(self):
@@ -54,7 +54,7 @@ class DownloadCase(TestCase):
 
 class DownloadSiteCase(TestCase):
     def setUp(self):
-        f = open(os.getcwd() + '/media/pier-569314_640.jpg', 'rb')
+        f = open(os.getcwd() + '/media/test.jpg', 'rb')
         UploadFile.objects.create(display_name="test", file=File(f))
 
     def test_download(self):

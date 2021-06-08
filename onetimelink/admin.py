@@ -15,14 +15,14 @@ from . import api
 import csv
 
 
-# Register your models here.
-class DownSiteAdmin(admin.ModelAdmin):
+@admin.register(DownloadSiteAdmin)
+class DownloadSiteAdmin(admin.ModelAdmin):
     change_list_template = "sitedownload_changelist.html"
 
     def get_queryset(self, request):
         """catch the request object for list pages"""
         self.request = request
-        return super(DownSiteAdmin, self).get_queryset(request)
+        return super(DownloadSiteAdmin, self).get_queryset(request)
 
     list_display = ('pk', 'link', 'timestamp_creation')
     search_fields = ['timestamp_creation']
@@ -55,16 +55,16 @@ class DownSiteAdmin(admin.ModelAdmin):
     link.short_description = _(u'link')
 
 
-# Register your models here.
-class DownLinkAdmin(admin.ModelAdmin):
+@admin.register(DownloadLinkAdmin)
+class DownloadLinkAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         """catch the request object for list pages"""
         self.request = request
-        return super(DownLinkAdmin, self).get_queryset(request)
+        return super(DownloadLinkAdmin, self).get_queryset(request)
 
     list_display = ('site', 'upload_file', 'file', 'active', 'link',
                     'timestamp_creation')
-    search_fields = ['site', 'upload_file', 'timestamp_creation', 'link', 'link_key']
+    search_fields = ['site__link_key', 'upload_file', 'link']
     list_per_page = 50
     fieldsets = (
         (_(u'Link'), {
@@ -91,14 +91,9 @@ class DownLinkAdmin(admin.ModelAdmin):
         filelink = u'<span style="color: #FF7F00; ">%s:</span> \
         <a target="new" href="%s/">%s/</a><br/>' \
             % (str(_(u'File')), filelink, filelink)
-
         return mark_safe(filelink)
     link.allow_tags = True
     link.short_description = _(u'link')
-
-
-admin.site.register(DownloadSite, DownSiteAdmin)
-admin.site.register(Download, DownLinkAdmin)
 
 
 @admin.register(UploadFile)
