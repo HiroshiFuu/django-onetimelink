@@ -3,7 +3,7 @@ import django
 import sys
 
 __author__ = "FENG Hao"
-__copyright__ = "Copyright (c) " + "25.11.2019" + " FENG Hao"
+__copyright__ = "Copyright (c) " + "08.06.2021" + " FENG Hao"
 __licence__ = """BSD-3-Clause Licence"""
 
 

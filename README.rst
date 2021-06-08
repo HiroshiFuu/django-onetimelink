@@ -130,3 +130,9 @@ Changelogs
     * Fix several bugs
     * Do NOT use previous versions of this package
 
+**2021-06-08**
+
+    * Fix search bug in admin
+    * clean up code
+    * Do NOT use previous versions of this package
+
