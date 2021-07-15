@@ -53,7 +53,7 @@ class DownloadSiteAdmin(admin.ModelAdmin):
     link.short_description = _(u'link')
 
 
-@admin.register(DownloadSite)
+@admin.register(Download)
 class DownloadAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         """catch the request object for list pages"""
