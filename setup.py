@@ -20,33 +20,33 @@ except ImportError:
     REQUIRES.append('django')
 
 if sys.version_info < (3, 6):
-   REQUIRES.append('python >= 3.6')
+    REQUIRES.append('python >= 3.6')
 
 
 setup(name='django-onetimelink',
-        version=1.4,
-        description='A django one-time file streaming application',
-        long_description=long_description,
-        author='FENG Hao',
-        author_email='hiroshifuu@outlook.com',
-        url='https://github.com/HiroshiFuu/django-onetimelink',
-        download_url='https://pypi.python.org/pypi/django-onetimelink',
-        license='BSD',
-        packages=find_packages(exclude=['example', ]),
-        include_package_data=True,
-        keywords="django one-time file link serve",
-        classifiers=[
-              'Development Status :: 5 - Production/Stable',
-              'Framework :: Django :: 2.0',
-              'Framework :: Django :: 3.0',
-              'License :: OSI Approved :: BSD License',
-              'Operating System :: OS Independent',
-              'Programming Language :: Python :: 3 :: Only',
-              'Environment :: Console',
-              'Natural Language :: English',
-              'Intended Audience :: Developers',
-              'Topic :: Internet',
-              ],
-        install_requires=REQUIRES,
-        zip_safe=False,
-        )
+      version=1.5,
+      description='A django one-time file streaming application',
+      long_description=long_description,
+      author='FENG Hao',
+      author_email='hiroshifuu@outlook.com',
+      url='https://github.com/HiroshiFuu/django-onetimelink',
+      download_url='https://pypi.python.org/pypi/django-onetimelink',
+      license='BSD',
+      packages=find_packages(exclude=['example', ]),
+      include_package_data=True,
+      keywords="django one-time file link serve",
+      classifiers=[
+          'Development Status :: 5 - Production/Stable',
+          'Framework :: Django :: 2.0',
+          'Framework :: Django :: 3.0',
+          'License :: OSI Approved :: BSD License',
+          'Operating System :: OS Independent',
+          'Programming Language :: Python :: 3 :: Only',
+          'Environment :: Console',
+          'Natural Language :: English',
+          'Intended Audience :: Developers',
+          'Topic :: Internet',
+      ],
+      install_requires=REQUIRES,
+      zip_safe=False,
+      )

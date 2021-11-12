@@ -7,6 +7,7 @@ from onetimelink import presettings
 
 import os
 
+
 class Obj:
     pass
 

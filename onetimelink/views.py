@@ -13,6 +13,7 @@ from . import presettings
 
 import os
 
+
 # Create your views here.
 def downloadsite(request):
     if request.method == 'POST':
@@ -21,7 +22,7 @@ def downloadsite(request):
         for down_file in UploadFile.objects.all():
             d = Download(site=sd, down_file=down_file)
             d.save()
-        return HttpResponseRedirect('../site/' + sd.link_key +'/')
+        return HttpResponseRedirect('../site/' + sd.link_key + '/')
     return HttpResponse('Method Not Allowed', status=405)
 
 

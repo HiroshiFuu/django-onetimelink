@@ -32,7 +32,6 @@ class DownloadSiteAdmin(admin.ModelAdmin):
         ]
         return my_urls + urls
 
-
     def make_downloadsite(self, request):
         download_site = DownloadSite()
         download_site.save()
