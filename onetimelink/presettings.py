@@ -43,6 +43,13 @@ DYNAMIC_LINK_SCHEMA_PROTO = getattr(
     'http'
 )
 
+# Setting for HTTP Host override
+DYNAMIC_LINK_HTTP_HOST = getattr(
+    settings,
+    'DYNAMIC_LINK_HTTP_HOST',
+    None
+)
+
 # It's here because of not violate the DRY priciple.
 TEXT_REQUEST_DOES_NOT_EXIST = _(u'This request does not exist.')
 TEXT_REQUEST_IS_EXPIRED = _(u'Sorry, this request is already expired')
