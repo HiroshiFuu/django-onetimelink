@@ -1,9 +1,5 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
 from django.db import IntegrityError
-from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from . import presettings

@@ -136,3 +136,7 @@ Changelogs
     * clean up code
     * Do NOT use previous versions of this package
 
+**2022-02-04**
+
+    * Add setting to override HTTP Host
+    * clean up code

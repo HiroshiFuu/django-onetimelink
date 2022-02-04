@@ -2,8 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseNotFound
-from django.shortcuts import redirect
-from django.utils import timezone
 from django.views.decorators.cache import cache_control
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import smart_str
@@ -126,12 +124,11 @@ def provide(request, key):
                 response['X-Sendfile'] = smart_str(file_path)
                 # response['X-Accel-Redirect'] = smart_str(file_path) # For ngnix
                 response['Content-Length'] = file_size
-
                 return response
         except IOError:
             stored_file_obj.active = False
             stored_file_obj.save()  # only raise the following once
-            return HttpResponseNotFound(unicode(_(u'File not found!')))  # admin
+            return HttpResponseNotFound(_(u'File not found!'))  # admin
 
     extra_context = {'message': 'Something went wrong...'}
     template = 'not_avallible.html'

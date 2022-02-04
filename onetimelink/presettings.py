@@ -20,7 +20,6 @@ DYNAMIC_LINK_URL_BASE_COMPONENT = getattr(
     'OneTimeLink'
 )
 
-
 # Prefixes if FORCE_SCRIPT_NAME
 DYNAMIC_LINK_URL = ''
 if settings.FORCE_SCRIPT_NAME:
