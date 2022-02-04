@@ -140,3 +140,4 @@ Changelogs
 
     * Add setting to override HTTP Host
     * clean up code
+    * Fix several bugs
