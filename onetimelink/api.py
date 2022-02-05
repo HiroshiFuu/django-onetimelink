@@ -7,7 +7,7 @@ def file_link_url(request, linkobject):
     """returns the access url of the of the dynamicLink object"""
     return '%s://%s%s/link/%s/%s' % (
         presettings.DYNAMIC_LINK_SCHEMA_PROTO,
-        get_http_host(),
+        get_http_host(request),
         presettings.DYNAMIC_LINK_URL,
         linkobject.link_key,
         linkobject.get_filename()
@@ -18,7 +18,7 @@ def site_link_url(request, siteobj):
     """returns a site urls form already given keys"""
     return '%s://%s%s/site/%s' % (
         presettings.DYNAMIC_LINK_SCHEMA_PROTO,
-        get_http_host(),
+        get_http_host(request),
         presettings.DYNAMIC_LINK_URL,
         siteobj.link_key
     )
