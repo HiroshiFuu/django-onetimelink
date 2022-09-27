@@ -24,7 +24,7 @@ if sys.version_info < (3, 6):
 
 
 setup(name='django-onetimelink',
-      version=1.9,
+      version=2.0,
       description='A django one-time file streaming application',
       long_description=long_description,
       author='FENG Hao',

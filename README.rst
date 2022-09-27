@@ -142,3 +142,11 @@ Changelogs
     * clean up code
     * Fix several bugs
     * Do NOT use previous versions of this package
+
+**2022-09-27**
+
+    * Add DYNAMIC_LINK_USE_FORCE_SCRIPT_NAME setting
+    * Add HTTP Host override setting
+    * Fix several bugs
+    * clean up code
+    * Do NOT use previous versions of this package
