@@ -19,12 +19,12 @@ except ImportError:
     # set requierment only if django not avallible.
     REQUIRES.append('django')
 
-if sys.version_info < (3, 6):
-    REQUIRES.append('python >= 3.6')
+if sys.version_info < (3, 8):
+    REQUIRES.append('python >= 3.8')
 
 
 setup(name='django-onetimelink',
-      version=2.0,
+      version=3.0,
       description='A django one-time file streaming application',
       long_description=long_description,
       author='FENG Hao',
@@ -37,8 +37,8 @@ setup(name='django-onetimelink',
       keywords="django one-time file link serve",
       classifiers=[
           'Development Status :: 5 - Production/Stable',
-          'Framework :: Django :: 2.0',
           'Framework :: Django :: 3.0',
+          'Framework :: Django :: 4.0',
           'License :: OSI Approved :: BSD License',
           'Operating System :: OS Independent',
           'Programming Language :: Python :: 3 :: Only',

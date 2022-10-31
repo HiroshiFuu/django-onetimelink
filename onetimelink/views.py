@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseNotFound
 from django.views.decorators.cache import cache_control
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.utils.encoding import smart_str
 
 from .models import DownloadSite, Download, IsExpiredError, UploadFile

@@ -1,11 +1,10 @@
 from django.contrib import admin
-from django.utils.translation import ugettext_lazy as _
-from django.utils.safestring import mark_safe
-from django.utils.html import escape
 from django.urls import path
 from django.urls import reverse
-from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from django.utils.translation import gettext_lazy as _
+from django.utils.safestring import mark_safe
+from django.utils.html import escape
 
 from .models import DownloadSite, Download, UploadFile
 

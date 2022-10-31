@@ -150,3 +150,9 @@ Changelogs
     * Fix several bugs
     * clean up code
     * Do NOT use previous versions of this package
+
+**2022-10-31**
+
+    * Add support for Django 4
+    * Remove support for Python 3.6, 3.7 as Django 4 requires min 3.8
+    * Do NOT use previous versions of this package

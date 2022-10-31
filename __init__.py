@@ -1,9 +1,8 @@
-import os
 import django
 import sys
 
 __author__ = "FENG Hao"
-__copyright__ = "Copyright (c) " + "08.06.2021" + " FENG Hao"
+__copyright__ = "Copyright (c) " + "31.10.2022" + " FENG Hao"
 __licence__ = """BSD-3-Clause Licence"""
 
 
@@ -21,14 +20,14 @@ def CKINST():
     dja = django.VERSION[:2]
     pyver = sys.version_info[:2]
     error = True
-    if not dja >= (2, 0):
+    if not dja >= (3, 0):
         print('')
-        print('Hint! Django requires 2.0 or greater which currently is' % dja)
+        print('Hint! Django requires 3.0 or greater which currently is' % dja)
     else:
         error = False
-    if not pyver >= (3, 4):
+    if not pyver >= (3, 8):
         print('')
-        print('Hint! Python requires 3.6 or greater which currently is' % pyver)
+        print('Hint! Python requires 3.8 or greater which currently is' % pyver)
     else:
         error = False
 
