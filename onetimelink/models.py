@@ -11,6 +11,7 @@ import os
 class DownloadSite(models.Model):
     class Meta:
         verbose_name = 'Download Site'
+
     link_key = models.CharField(max_length=63, editable=False, unique=True)
     timestamp_creation = models.DateTimeField(
         auto_now=False,
@@ -19,7 +20,7 @@ class DownloadSite(models.Model):
         verbose_name=_(u'creation time'),
     )
 
-    def save(self, * args, ** kwargs):
+    def save(self, *args, **kwargs):
         """Perform custom methods before saving."""
         # If not available set a link key before saving
         if not self.link_key:
@@ -27,14 +28,15 @@ class DownloadSite(models.Model):
 
         # call the real save method
         try:
-            super(DownloadSite, self).save(*args, ** kwargs)
+            super(DownloadSite, self).save(*args, **kwargs)
         except IntegrityError:
             # enforce a unique key (with a longer string)
             import time
+
             key = str(time.time()).replace('.', '')
             self.link_key = key + api.gen_key()
             # call the save method again
-            super(DownloadSite, self).save(*args, ** kwargs)
+            super(DownloadSite, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.link_key
@@ -43,13 +45,9 @@ class DownloadSite(models.Model):
 class UploadFile(models.Model):
     class Meta:
         verbose_name = 'Upload File'
+
     display_name = models.CharField(max_length=63, blank=False, null=False, unique=True, verbose_name=_('Display Name'))
-    file = models.FileField(
-        upload_to=presettings.DYNAMIC_LINK_UPLOAD_TO,
-        help_text=_(u'Select the file to upload'),
-        verbose_name=_(u'file'),
-        max_length=255,
-    )
+    file = models.FileField(upload_to=presettings.DYNAMIC_LINK_UPLOAD_TO, help_text=_(u'Select the file to upload'), verbose_name=_(u'file'), max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.display_name
@@ -65,7 +63,7 @@ class Download(models.Model):
         verbose_name=_(u'creation time'),
     )
     site = models.ForeignKey(DownloadSite, models.CASCADE, related_name='downloads', blank=True, null=True)
-    down_file = models.ForeignKey(UploadFile, models.CASCADE, related_name='downloads', blank=True, null=True)
+    down_file = models.ForeignKey(UploadFile, models.CASCADE, related_name='downloads')
 
     def get_filename(self):
         return os.path.basename(self.down_file.file.path)
@@ -81,7 +79,7 @@ class Download(models.Model):
             return self.down_file.file.path
         return None
 
-    def save(self, * args, ** kwargs):
+    def save(self, *args, **kwargs):
         """Perform custom methods before saving."""
         # If link not created, generate a link key before saving
         if not self.link_key:
@@ -89,27 +87,21 @@ class Download(models.Model):
 
         # call the real save method
         try:
-            super(Download, self).save(*args, ** kwargs)
+            super(Download, self).save(*args, **kwargs)
         except IntegrityError:
             # enforce a unique key (with a longer string)
             import time
+
             key = str(time.time()).replace('.', '')
             self.link_key = key + api.gen_key()
             # call the save method again
-            super(Download, self).save(*args, ** kwargs)
+            super(Download, self).save(*args, **kwargs)
 
     def __unicode__(self):
         if self.down_file is not None:
-            return '%s: %s, %s' % (
-                str(_(u'Filename')),
-                self.down_file.display_name,
-                self.get_filename()
-            )
+            return '%s: %s, %s' % (str(_(u'Filename')), self.down_file.display_name, self.get_filename())
         else:
-            return '%s: %s' % (
-                str(_(u'Filename')),
-                self.get_filename()
-            )
+            return '%s: %s' % (str(_(u'Filename')), self.get_filename())
 
     def __str__(self):
         if self.down_file is not None:
